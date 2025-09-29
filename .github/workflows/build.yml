@@ -36,30 +36,5 @@ jobs:
         name: eat-mineral-plugin
         path: target/eat-mineral-*.jar
         
-    - name: Create Release
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      uses: softprops/action-gh-release@v1
-      with:
-        files: target/eat-mineral-*.jar
-        tag_name: v${{ github.run_number }}
-        name: EatMineral v${{ github.run_number }}
-        body: |
-          ## EatMineral 插件更新
-          
-          ### 更新內容
-          - 自動編譯版本
-          
-          ### 安裝說明
-          1. 下載 `eat-mineral-*.jar` 文件
-          2. 將文件放入服務器的 `plugins` 資料夾
-          3. 重啟服務器
-          4. 享受食用礦物的樂趣！
-          
-          ### 功能
-          - 鑽石 → 鑽石糖
-          - 黃金 → 黃金巧克力  
-          - 煤炭 → 煤炭餅乾
-          - 鐵 → 鐵質能量棒
-          - 銅 → 銅製糖果
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
