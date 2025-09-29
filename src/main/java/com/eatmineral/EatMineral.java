@@ -1,6 +1,7 @@
 package com.eatmineral;
 
 import com.eatmineral.commands.EatMineralCommand;
+import com.eatmineral.commands.ConvertCommand;
 import com.eatmineral.listeners.PlayerInteractListener;
 import com.eatmineral.managers.MineralManager;
 import com.eatmineral.utils.MessageUtil;
@@ -25,6 +26,7 @@ public class EatMineral extends JavaPlugin {
         
         // 註冊命令
         getCommand("eatmineral").setExecutor(new EatMineralCommand(this));
+        getCommand("ceat").setExecutor(new ConvertCommand(this));
         
         // 註冊事件監聽器
         getServer().getPluginManager().registerEvents(new PlayerInteractListener(this), this);

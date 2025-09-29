@@ -12,6 +12,10 @@ commands:
     usage: /<command> [reload]
     permission: eatmineral.admin
     aliases: [em, eatm]
+  ceat:
+    description: 將手中的礦物轉換成可食用版本
+    usage: /<command>
+    permission: eatmineral.convert
 
 permissions:
   eatmineral.admin:
@@ -19,4 +23,7 @@ permissions:
     default: op
   eatmineral.use:
     description: 允許使用礦物食用功能
+    default: true
+  eatmineral.convert:
+    description: 允許使用礦物轉換功能
     default: true

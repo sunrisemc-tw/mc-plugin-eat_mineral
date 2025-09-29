@@ -38,6 +38,14 @@ public class MessageUtil {
                 return "&c無效的礦物名稱: {0}";
             case "mineral.eaten":
                 return "&a你食用了 {0}！恢復了 {1} 飽食度和 {2} 飽和度！";
+            case "player-only":
+                return "&c此命令只能由玩家執行！";
+            case "no-item-in-hand":
+                return "&c你手中沒有物品！";
+            case "cannot-convert":
+                return "&c無法轉換 {0}，此物品不是可轉換的礦物！";
+            case "convert-success":
+                return "&a成功將 {1} 個 {0} 轉換成可食用版本！";
             default:
                 return "&c未知的消息鍵: " + key;
         }
