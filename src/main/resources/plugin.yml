@@ -1,0 +1,22 @@
+name: EatMineral
+version: '${project.version}'
+main: com.eatmineral.EatMineral
+api-version: 1.20
+author: EatMineral Team
+description: 一個讓玩家可以食用礦物的插件
+website: https://github.com/yourusername/eat_mineral
+
+commands:
+  eatmineral:
+    description: EatMineral 插件主命令
+    usage: /<command> [reload]
+    permission: eatmineral.admin
+    aliases: [em, eatm]
+
+permissions:
+  eatmineral.admin:
+    description: 允許使用 EatMineral 管理命令
+    default: op
+  eatmineral.use:
+    description: 允許使用礦物食用功能
+    default: true

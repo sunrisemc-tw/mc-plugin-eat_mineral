@@ -1,0 +1,56 @@
+# EatMineral 插件配置文件
+# EatMineral Plugin Configuration
+
+# 插件設定
+plugin:
+  # 是否啟用插件
+  enabled: true
+  # 調試模式
+  debug: false
+
+# 礦物設定
+minerals:
+  # 鑽石設定
+  diamond:
+    name: "鑽石糖"
+    description: "§b一顆閃閃發光的鑽石糖，吃下去會讓你感到無比珍貴！"
+    food-level: 8
+    saturation: 1.2
+    
+  # 黃金設定
+  gold:
+    name: "黃金巧克力"
+    description: "§6一塊香濃的黃金巧克力，吃下去會讓你感到富有！"
+    food-level: 6
+    saturation: 1.0
+    
+  # 煤炭設定
+  coal:
+    name: "煤炭餅乾"
+    description: "§8一塊黑黑的煤炭餅乾，雖然看起來不怎麼樣，但味道還不錯！"
+    food-level: 4
+    saturation: 0.8
+    
+  # 鐵設定
+  iron:
+    name: "鐵質能量棒"
+    description: "§7一根堅硬的鐵質能量棒，吃下去會讓你感到強壯！"
+    food-level: 5
+    saturation: 0.9
+    
+  # 銅設定
+  copper:
+    name: "銅製糖果"
+    description: "§c一顆溫暖的銅製糖果，吃下去會讓你感到溫暖！"
+    food-level: 3
+    saturation: 0.7
+
+# 消息設定
+messages:
+  no-permission: "&c你沒有權限執行此命令！"
+  config-reloaded: "&a配置已重新載入！"
+  usage-give: "&c用法: /eatmineral give <礦物名稱>"
+  mineral-given: "&a已給予 {0}！"
+  mineral-not-found: "&c找不到礦物: {0}"
+  invalid-mineral: "&c無效的礦物名稱: {0}"
+  mineral.eaten: "&a你食用了 {0}！恢復了 {1} 飽食度和 {2} 飽和度！"
