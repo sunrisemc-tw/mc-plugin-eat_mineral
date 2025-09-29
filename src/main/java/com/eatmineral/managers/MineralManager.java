@@ -21,19 +21,19 @@ public class MineralManager {
     
     public void initializeMinerals() {
         // 鑽石
-        registerMineral(Material.DIAMOND, "鑽石糖", "§b一顆閃閃發光的鑽石糖，吃下去會讓你感到無比珍貴！", 8, 1.2f);
+        registerMineral(Material.DIAMOND, "§b可食用礦物-鑽石錠", "§b一顆閃閃發光的鑽石錠，可以直接食用，你有錢阿吃這玩意！", 8, 1.2f);
         
         // 黃金
-        registerMineral(Material.GOLD_INGOT, "黃金巧克力", "§6一塊香濃的黃金巧克力，吃下去會讓你感到富有！", 6, 1.0f);
+        registerMineral(Material.GOLD_INGOT, "§6可食用礦物-黃金錠", "§6一塊金黃色的黃金錠，可以直接食用，吃了我猜你大概會重金屬中毒！", 6, 1.0f);
         
         // 煤炭
-        registerMineral(Material.COAL, "煤炭餅乾", "§8一塊黑黑的煤炭餅乾，雖然看起來不怎麼樣，但味道還不錯！", 4, 0.8f);
+        registerMineral(Material.COAL, "§8可食用礦物-煤炭錠", "§8一塊黑黑的煤炭錠，可以直接食用，吃了之後你嘴巴都黑黑的！", 4, 0.8f);
         
         // 鐵
-        registerMineral(Material.IRON_INGOT, "鐵質能量棒", "§7一根堅硬的鐵質能量棒，吃下去會讓你感到強壯！", 5, 0.9f);
+        registerMineral(Material.IRON_INGOT, "§7可食用礦物-鐵錠", "§7堅硬的鐵錠，可以直接食用，非常的補充你的鐵質！", 5, 0.9f);
         
         // 銅
-        registerMineral(Material.COPPER_INGOT, "銅製糖果", "§c一顆溫暖的銅製糖果，吃下去會讓你感到溫暖！", 3, 0.7f);
+        registerMineral(Material.COPPER_INGOT, "§c可食用礦物-銅錠", "§c一顆溫暖的銅錠，可以直接食用，吃了就中毒了吧！？", 3, 0.7f);
         
         plugin.getLogger().info("已初始化 " + eatableMinerals.size() + " 種可食用礦物！");
     }

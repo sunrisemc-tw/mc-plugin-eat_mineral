@@ -12,36 +12,36 @@ plugin:
 minerals:
   # 鑽石設定
   diamond:
-    name: "鑽石糖"
-    description: "§b一顆閃閃發光的鑽石糖，吃下去會讓你感到無比珍貴！"
+    name: "§b可食用礦物-鑽石錠"
+    description: "§b一顆閃閃發光的鑽石錠，可以直接食用！"
     food-level: 8
     saturation: 1.2
     
   # 黃金設定
   gold:
-    name: "黃金巧克力"
-    description: "§6一塊香濃的黃金巧克力，吃下去會讓你感到富有！"
+    name: "§6可食用礦物-黃金錠"
+    description: "§6一塊金黃色的黃金錠，可以直接食用！"
     food-level: 6
     saturation: 1.0
     
   # 煤炭設定
   coal:
-    name: "煤炭餅乾"
-    description: "§8一塊黑黑的煤炭餅乾，雖然看起來不怎麼樣，但味道還不錯！"
+    name: "§8可食用礦物-煤炭錠"
+    description: "§8一塊黑黑的煤炭錠，可以直接食用！"
     food-level: 4
     saturation: 0.8
     
   # 鐵設定
   iron:
-    name: "鐵質能量棒"
-    description: "§7一根堅硬的鐵質能量棒，吃下去會讓你感到強壯！"
+    name: "§7可食用礦物-鐵錠"
+    description: "§7一根堅硬的鐵錠，可以直接食用！"
     food-level: 5
     saturation: 0.9
     
   # 銅設定
   copper:
-    name: "銅製糖果"
-    description: "§c一顆溫暖的銅製糖果，吃下去會讓你感到溫暖！"
+    name: "§c可食用礦物-銅錠"
+    description: "§c一顆溫暖的銅錠，可以直接食用！"
     food-level: 3
     saturation: 0.7
 
