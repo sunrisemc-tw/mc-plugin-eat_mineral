@@ -27,7 +27,7 @@ public class MineralManager {
         registerMineral(Material.GOLD_INGOT, "§6可食用礦物-黃金錠", "§6一塊金黃色的黃金錠，可以直接食用，吃了我猜你大概會重金屬中毒！", 6, 1.0f);
         
         // 煤炭
-        registerMineral(Material.COAL, "§8可食用礦物-煤炭錠", "§8一塊黑黑的煤炭錠，可以直接食用，吃了之後你嘴巴都黑黑的！", 4, 0.8f);
+        registerMineral(Material.COAL, "§8可食用礦物-煤炭", "§8一塊黑黑的煤炭，可以直接食用，吃了之後你嘴巴都黑黑的！", 4, 0.8f);
         
         // 鐵
         registerMineral(Material.IRON_INGOT, "§7可食用礦物-鐵錠", "§7堅硬的鐵錠，可以直接食用，非常的補充你的鐵質！", 5, 0.9f);

@@ -26,8 +26,8 @@ minerals:
     
   # 煤炭設定
   coal:
-    name: "§8可食用礦物-煤炭錠"
-    description: "§8一塊黑黑的煤炭錠，可以直接食用，吃了之後你嘴巴都黑黑的！"
+    name: "§8可食用礦物-煤炭"
+    description: "§8一塊黑黑的煤炭，可以直接食用，吃了之後你嘴巴都黑黑的！"
     food-level: 4
     saturation: 0.8
     
