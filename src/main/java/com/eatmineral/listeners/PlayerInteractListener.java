@@ -110,7 +110,6 @@ public class PlayerInteractListener implements Listener {
                         } else {
                             player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
                         }
-                        
                         // 給予食物效果
                         int currentFoodLevel = player.getFoodLevel();
                         float currentSaturation = player.getSaturation();
@@ -131,6 +130,62 @@ public class PlayerInteractListener implements Listener {
                             String.valueOf(foodLevel),
                             String.valueOf(saturation));
                         player.sendMessage(message);
+                        // 偵測吃下的礦物種類
+                        Material material = item.getType();
+                        switch (material) {
+							case NETHERITE:
+							    player.sendMessage("這東西黑到發光跟發霉一樣你敢吃喔");
+							    player.addPotionEffect(new org.bukkit.potion.PotionEffect(
+								org.bukkit.potion.PotionEffect.DAMAGE_RESISTANCE, 200, 2)); // 10秒 抗性III
+                            case DIAMOND:
+                                player.sendMessage("吃鑽石阿，真不愧是有錢人！");
+                                player.addPotionEffect(new org.bukkit.potion.PotionEffect(
+                                org.bukkit.potion.PotionEffectType.REGENERATION, 200, 1)); // 10秒 回復II
+                                break;
+
+                            case GOLD_INGOT:
+                                player.sendMessage("你感覺全身發金！");
+                                player.addPotionEffect(new org.bukkit.potion.PotionEffect(
+                                org.bukkit.potion.PotionEffectType.ABSORPTION, 100, 1)); // 5秒 吸收II
+                                break;
+
+                            case REDSTONE:
+                                player.sendMessage("你感覺到能量在體內流竄！");
+                                player.addPotionEffect(new org.bukkit.potion.PotionEffect(
+                                org.bukkit.potion.PotionEffectType.SPEED, 160, 1)); // 8秒 速度II
+                                break;
+
+                            case COAL:
+                                player.sendMessage("搞到自己眼睛上了……");
+                                player.addPotionEffect(new org.bukkit.potion.PotionEffect(
+                                org.bukkit.potion.PotionEffectType.BLINDNESS, 100, 0)); // 5秒 失明I
+                                break;
+							case IRON:
+							    player.sendMessage("多吃鐵，補充鐵質，沒問題的！");
+								player.addPotionEffect(new org.bukkit.potion.PotionEffect(
+                                org.bukkit.potion.PotionEffectType.STRENGTH, 200, 0)); // 10秒 力量I
+                            case COPPER:
+							    double baseChance = copperChanceMap.getOrDefault(player.getUniqueId(), 15.0);
+							    double random = Math.random() * 100.0;
+							    if (random <= baseChance) {
+							        player.sendMessage("哈哈哈，就說了會中毒，不信喔！");
+							        player.getWorld().strikeLightningEffect(player.getLocation());
+							        player.addPotionEffect(new org.bukkit.potion.PotionEffect(
+							        org.bukkit.potion.PotionEffectType.POISON, 200, 2)); // 10秒 中毒II
+							        // 重置機率
+							        copperChanceMap.put(player.getUniqueId(), 15.0);
+							    } else {
+							        // 沒觸發 → 機率提高
+							        double newChance = Math.min(100.0, baseChance + 5.0);
+							        copperChanceMap.put(player.getUniqueId(), newChance);
+							        player.sendMessage("不是吧，你吃銅喔，你等等就金屬中毒");
+                                    break;
+                            case EMERALD:
+                                player.sendMessage("綠綠的是不是長青苔？好吃嗎？");
+                                player.addPotionEffect(new org.bukkit.potion.PotionEffect(
+                                org.bukkit.potion.PotionEffectType.LUCK, 300, 1)); // 15秒 幸運II
+                                break;
+                        }
                     }
                 }
             }
