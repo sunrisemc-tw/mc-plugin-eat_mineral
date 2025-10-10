@@ -58,6 +58,27 @@ minerals:
     description: "§c一顆溫暖的銅錠，可以直接食用，吃了就中毒了吧！？"
     food-level: 3
     saturation: 0.7
+    
+  # 綠寶石設定
+  emerald:
+    name: "§a可食用礦物-綠寶石"
+    description: "§a一顆翠綠的綠寶石，可以直接食用，綠綠的是不是長青苔？"
+    food-level: 7
+    saturation: 1.1
+    
+  # 下界合金錠設定
+  netherite:
+    name: "§5可食用礦物-下界合金錠"
+    description: "§5一塊黑到發光的下界合金錠，可以直接食用，這東西黑到發光跟發霉一樣你敢吃喔！"
+    food-level: 10
+    saturation: 1.5
+    
+  # 紅石設定
+  redstone:
+    name: "§c可食用礦物-紅石"
+    description: "§c一顆充滿能量的紅石，可以直接食用，你感覺到能量在體內流竄！"
+    food-level: 6
+    saturation: 0.9
 
 # 消息設定
 messages:
