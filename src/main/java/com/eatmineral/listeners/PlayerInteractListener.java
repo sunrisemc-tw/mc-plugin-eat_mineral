@@ -16,7 +16,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -25,6 +27,10 @@ public class PlayerInteractListener implements Listener {
     private final EatMineral plugin;
     // 銅礦中毒機率映射表
     private final Map<UUID, Double> copperChanceMap = new HashMap<>();
+    // 氯化鈉食用記錄（鐵粒）- 記錄每次食用的時間戳
+    private final Map<UUID, List<Long>> sodiumChlorideTimestamps = new HashMap<>();
+    // 潮結的氯化鈉食用記錄（鐵磚）
+    private final Map<UUID, List<Long>> wetSodiumChlorideTimestamps = new HashMap<>();
     
     public PlayerInteractListener(EatMineral plugin) {
         this.plugin = plugin;
@@ -201,6 +207,68 @@ public class PlayerInteractListener implements Listener {
                                 player.sendMessage("§a綠綠的是不是長青苔？好吃嗎？");
                                 player.addPotionEffect(new PotionEffect(
                                     PotionEffectType.LUCK, 300, 1)); // 15秒 幸運II
+                                break;
+                                
+                            case IRON_NUGGET:
+                                // 氯化鈉 - 追蹤1分鐘內的食用次數
+                                UUID playerId = player.getUniqueId();
+                                long currentTime = System.currentTimeMillis();
+                                
+                                // 獲取或創建時間戳列表
+                                List<Long> timestamps = sodiumChlorideTimestamps.getOrDefault(playerId, new ArrayList<>());
+                                
+                                // 移除超過1分鐘的記錄
+                                timestamps.removeIf(time -> currentTime - time > 60000); // 60秒
+                                
+                                // 添加當前時間
+                                timestamps.add(currentTime);
+                                sodiumChlorideTimestamps.put(playerId, timestamps);
+                                
+                                // 檢查是否吃太多
+                                if (timestamps.size() >= 10) {
+                                    player.sendMessage("§c吃太多了，對身體不好");
+                                    player.addPotionEffect(new PotionEffect(
+                                        PotionEffectType.POISON, 100, 1)); // 5秒 中毒II
+                                    // 清空記錄
+                                    timestamps.clear();
+                                    sodiumChlorideTimestamps.put(playerId, timestamps);
+                                } else {
+                                    player.sendMessage("§f補充鹽分中...");
+                                    player.addPotionEffect(new PotionEffect(
+                                        PotionEffectType.ABSORPTION, 120, 0)); // 6秒 吸收I
+                                }
+                                break;
+                                
+                            case IRON_BLOCK:
+                                // 潮結的氯化鈉 - 追蹤1分鐘內的食用次數
+                                UUID playerIdBlock = player.getUniqueId();
+                                long currentTimeBlock = System.currentTimeMillis();
+                                
+                                // 獲取或創建時間戳列表
+                                List<Long> timestampsBlock = wetSodiumChlorideTimestamps.getOrDefault(playerIdBlock, new ArrayList<>());
+                                
+                                // 移除超過1分鐘的記錄
+                                timestampsBlock.removeIf(time -> currentTimeBlock - time > 60000); // 60秒
+                                
+                                // 添加當前時間
+                                timestampsBlock.add(currentTimeBlock);
+                                wetSodiumChlorideTimestamps.put(playerIdBlock, timestampsBlock);
+                                
+                                // 檢查是否吃太多
+                                if (timestampsBlock.size() >= 5) {
+                                    player.sendMessage("§c吃太多了，對身體不好");
+                                    player.addPotionEffect(new PotionEffect(
+                                        PotionEffectType.POISON, 100, 1)); // 5秒 中毒II
+                                    // 清空記錄
+                                    timestampsBlock.clear();
+                                    wetSodiumChlorideTimestamps.put(playerIdBlock, timestampsBlock);
+                                } else {
+                                    player.sendMessage("§7真硬！這一整塊鹽吃下去超撐的...");
+                                    player.addPotionEffect(new PotionEffect(
+                                        PotionEffectType.ABSORPTION, 200, 1)); // 10秒 吸收II
+                                    player.addPotionEffect(new PotionEffect(
+                                        PotionEffectType.SLOW, 100, 0)); // 5秒 緩速I（吃太撐）
+                                }
                                 break;
                         }
                     }

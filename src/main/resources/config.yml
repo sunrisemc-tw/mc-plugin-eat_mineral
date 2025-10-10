@@ -79,6 +79,20 @@ minerals:
     description: "§c一顆充滿能量的紅石，可以直接食用，你感覺到能量在體內流竄！"
     food-level: 6
     saturation: 0.9
+    
+  # 鐵粒 - 氯化鈉
+  iron_nugget:
+    name: "§f氯化鈉"
+    description: "§7補充鹽分很重要，來點氯化鈉"
+    food-level: 2
+    saturation: 0.3
+    
+  # 鐵磚 - 潮結的氯化鈉
+  iron_block:
+    name: "§7潮結的氯化鈉"
+    description: "§8真是的，怎麼受潮變成一整塊了啦！"
+    food-level: 8
+    saturation: 1.0
 
 # 消息設定
 messages:

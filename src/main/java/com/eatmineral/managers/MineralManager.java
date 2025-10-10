@@ -61,6 +61,12 @@ public class MineralManager {
         // 紅石
         registerMineral(Material.REDSTONE, "§c可食用礦物-紅石", "§c一顆充滿能量的紅石，可以直接食用，你感覺到能量在體內流竄！", 6, 0.9f);
         
+        // 鐵粒 - 氯化鈉
+        registerMineral(Material.IRON_NUGGET, "§f氯化鈉", "§7補充鹽分很重要，來點氯化鈉", 2, 0.3f);
+        
+        // 鐵磚 - 潮結的氯化鈉
+        registerMineral(Material.IRON_BLOCK, "§7潮結的氯化鈉", "§8真是的，怎麼受潮變成一整塊了啦！", 8, 1.0f);
+        
         plugin.getLogger().info("已初始化 " + eatableMinerals.size() + " 種可食用礦物！");
     }
     
