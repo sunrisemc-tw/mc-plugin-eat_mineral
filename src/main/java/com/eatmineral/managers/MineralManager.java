@@ -56,7 +56,7 @@ public class MineralManager {
         registerMineral(Material.EMERALD, "§a可食用礦物-綠寶石", "§a一顆翠綠的綠寶石，可以直接食用，綠綠的是不是長青苔？", 7, 1.1f);
         
         // 下界合金錠
-        registerMineral(Material.NETHERITE_INGOT, "§5可食用礦物-下界合金錠", "§5一塊黑到發光的下界合金錠，可以直接食用，這東西黑到發光跟發霉一樣你敢吃喔！", 10, 1.5f);
+        registerMineral(Material.NETHERITE_INGOT, "§5可食用礦物-獄髓錠", "§5一塊黑到發光的獄髓錠，可以直接食用，這東西黑到發光跟發霉一樣你敢吃喔！", 10, 1.5f);
         
         // 紅石
         registerMineral(Material.REDSTONE, "§c可食用礦物-紅石", "§c一顆充滿能量的紅石，可以直接食用，你感覺到能量在體內流竄！", 6, 0.9f);
