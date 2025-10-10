@@ -51,6 +51,16 @@
 - **構建工具**：Maven
 - **自動編譯**：GitHub Actions
 
+### 技術細節
+
+轉換後的礦物使用 **PersistentDataContainer** 來儲存 NBT 標籤：
+
+- `eatable` - 標記物品為可食用（BYTE）
+- `food_level` - 儲存飽食度數值（INTEGER）
+- `saturation` - 儲存飽和度數值（FLOAT）
+
+這些 NBT 標籤確保只有經過轉換的礦物才能被食用，並且保存了正確的食物數值。
+
 ## 📋 系統需求
 
 - Minecraft 1.20.4+
