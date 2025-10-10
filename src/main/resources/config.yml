@@ -12,7 +12,7 @@ plugin:
 minerals:
   # 獄髓設定
   netherite:
-    name: "§b可食用礦物-獄髓錠"
+    name: "§j可食用礦物-獄髓錠"
     description: "§j一顆閃閃發光的獄髓錠，可以直接食用，你錢真是太多了！"
     food-level: 14
     saturation: 1.8
