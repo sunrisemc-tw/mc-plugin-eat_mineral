@@ -3,6 +3,7 @@ package com.eatmineral.managers;
 import com.eatmineral.EatMineral;
 import com.eatmineral.items.EatableMineral;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 
@@ -14,9 +15,19 @@ public class MineralManager {
     private final EatMineral plugin;
     private final Map<Material, EatableMineral> eatableMinerals;
     
+    // NamespacedKey 用於 NBT 標籤
+    private final NamespacedKey eatableKey;
+    private final NamespacedKey foodLevelKey;
+    private final NamespacedKey saturationKey;
+    
     public MineralManager(EatMineral plugin) {
         this.plugin = plugin;
         this.eatableMinerals = new HashMap<>();
+        
+        // 初始化 NamespacedKey
+        this.eatableKey = new NamespacedKey(plugin, EatableMineral.EATABLE_KEY);
+        this.foodLevelKey = new NamespacedKey(plugin, EatableMineral.FOOD_LEVEL_KEY);
+        this.saturationKey = new NamespacedKey(plugin, EatableMineral.SATURATION_KEY);
     }
     
     public void initializeMinerals() {
@@ -58,5 +69,32 @@ public class MineralManager {
     public void reloadMinerals() {
         eatableMinerals.clear();
         initializeMinerals();
+    }
+    
+    /**
+     * 創建轉換後的可食用物品
+     * @param eatableMineral 可食用礦物
+     * @param amount 數量
+     * @return 帶有 NBT 標籤的可食用物品
+     */
+    public ItemStack createConvertedItem(EatableMineral eatableMineral, int amount) {
+        ItemStack item = eatableMineral.createEatableItem(eatableKey, foodLevelKey, saturationKey);
+        item.setAmount(amount);
+        return item;
+    }
+    
+    /**
+     * 獲取 NamespacedKey
+     */
+    public NamespacedKey getEatableKey() {
+        return eatableKey;
+    }
+    
+    public NamespacedKey getFoodLevelKey() {
+        return foodLevelKey;
+    }
+    
+    public NamespacedKey getSaturationKey() {
+        return saturationKey;
     }
 }

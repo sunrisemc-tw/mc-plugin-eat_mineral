@@ -58,8 +58,7 @@ public class ConvertCommand implements CommandExecutor {
         }
         
         // 轉換物品
-        ItemStack convertedItem = eatableMineral.createEatableItem();
-        convertedItem.setAmount(itemInHand.getAmount());
+        ItemStack convertedItem = plugin.getMineralManager().createConvertedItem(eatableMineral, itemInHand.getAmount());
         
         // 替換手中的物品
         player.getInventory().setItemInMainHand(convertedItem);
