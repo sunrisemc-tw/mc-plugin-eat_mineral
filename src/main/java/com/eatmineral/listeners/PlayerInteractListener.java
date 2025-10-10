@@ -144,7 +144,7 @@ public class PlayerInteractListener implements Listener {
                         Material material = item.getType();
                         switch (material) {
                             case NETHERITE_INGOT:
-                                player.sendMessage("§5這東西黑到發光跟發霉一樣你敢吃喔");
+                                player.sendMessage("§j這東西黑到發光跟發霉一樣你敢吃喔");
                                 player.addPotionEffect(new PotionEffect(
                                     PotionEffectType.DAMAGE_RESISTANCE, 200, 2)); // 10秒 抗性III
                                 break;
