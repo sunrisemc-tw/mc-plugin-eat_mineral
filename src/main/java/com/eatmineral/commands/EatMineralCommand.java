@@ -79,7 +79,7 @@ public class EatMineralCommand implements CommandExecutor {
             EatableMineral eatableMineral = plugin.getMineralManager().getEatableMineral(material);
             
             if (eatableMineral != null) {
-                ItemStack item = eatableMineral.createEatableItem();
+                ItemStack item = plugin.getMineralManager().createConvertedItem(eatableMineral, 1);
                 player.getInventory().addItem(item);
                 player.sendMessage(plugin.getMessageUtil().getMessage("mineral-given", eatableMineral.getName()));
             } else {
