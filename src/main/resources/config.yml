@@ -58,3 +58,4 @@ messages:
   no-item-in-hand: "&c你手中沒有物品！"
   cannot-convert: "&c無法轉換 {0}，此物品不是可轉換的礦物！"
   convert-success: "&a成功將 {1} 個 {0} 轉換成可食用版本！"
+  not-hungry: "&c你現在不餓，無法食用！"
