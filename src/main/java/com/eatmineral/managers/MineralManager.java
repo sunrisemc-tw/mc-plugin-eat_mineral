@@ -38,7 +38,7 @@ public class MineralManager {
         registerMineral(Material.DIAMOND, "§j可食用礦物-獄髓錠", "§j一顆閃閃發光的獄髓錠，可以直接食用，你錢真是太多了！", 10, 1.4f);
 
         // 鑽石
-        registerMineral(Material.DIAMOND, "§b可食用礦物-鑽石錠", "§b一顆閃閃發光的鑽石錠，可以直接食用，你有錢阿吃這玩意！", 8, 1.2f);
+        registerMineral(Material.DIAMOND, "§b可食用礦物-鑽石", "§b一顆閃閃發光的鑽石，可以直接食用，你有錢阿吃這玩意！", 8, 1.2f);
         
         // 黃金
         registerMineral(Material.GOLD_INGOT, "§6可食用礦物-黃金錠", "§6一塊金黃色的黃金錠，可以直接食用，吃了我猜你大概會重金屬中毒！", 6, 1.0f);
