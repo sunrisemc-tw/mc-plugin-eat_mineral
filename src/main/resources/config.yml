@@ -59,13 +59,6 @@ minerals:
     food-level: 3
     saturation: 0.7
     
-  # 綠寶石設定
-  emerald:
-    name: "§a可食用礦物-綠寶石"
-    description: "§a一顆翠綠的綠寶石，可以直接食用，綠綠的是不是長青苔？"
-    food-level: 10
-    saturation: 1.1
-
   # 紅石設定
   redstone:
     name: "§c可食用礦物-紅石"
