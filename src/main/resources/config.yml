@@ -95,7 +95,7 @@ minerals:
     saturation: 0.9
     
   # 青金石設定
-  amethyst_shard:
+  lapis_lazuli:
     name: "§t可食用礦物-青金石"
     description: "§d一個看起來有深邃藍色的青金石，可以直接食用，在古代可比黃金貴多了！"
     food-level: 5
