@@ -208,6 +208,19 @@ public class PlayerInteractListener implements Listener {
                                 player.addPotionEffect(new PotionEffect(
                                     PotionEffectType.LUCK, 300, 1)); // 15秒 幸運II
                                 break;
+
+                            case AMETHYST_SHARD:
+                                player.sendMessage("§d吃下去腸胃不會壞掉?");
+                                player.addPotionEffect(new PotionEffect(
+                                    PotionEffectType.NAUSEA, 100, 0)); // 5秒 噁心I
+                                player.addPotionEffect(new PotionEffect(
+                                    PotionEffectType.FIRE_RESISTANCE, 200, 1); // 10秒 抗火II
+                                break;
+
+                            case LAPIS_LAZULI;
+                                player.sendMessage("§1嘴巴有沒有藍藍的?");
+                                player.addPotionEffect(new PotionEffect(
+                                    PotionEffectType.NIGHT_VISION, 200, 1); // 10秒 夜視II
                                 
                             case IRON_NUGGET:
                                 // 氯化鈉 - 追蹤1分鐘內的食用次數
