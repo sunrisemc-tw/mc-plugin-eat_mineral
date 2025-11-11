@@ -241,6 +241,6 @@ public class PlayerInteractListener implements Listener {
                 default:
                     break;
             }
-        }, () -> {}, 0L, 1L);
+        }, () -> {}, 1L, 1L);
     }
 }
