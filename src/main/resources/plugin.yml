@@ -1,5 +1,6 @@
 name: EatMineral
 version: '${project.version}'
+folia-supported: true
 main: com.eatmineral.EatMineral
 api-version: 1.20
 author: EatMineral Team
