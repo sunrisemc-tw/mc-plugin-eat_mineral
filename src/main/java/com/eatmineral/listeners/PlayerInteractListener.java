@@ -1,6 +1,9 @@
 package com.eatmineral.listeners;
 
 import com.eatmineral.EatMineral;
+import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,9 +16,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 
 import java.util.Deque;
 import java.util.Map;
@@ -25,7 +25,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class PlayerInteractListener implements Listener {
-    
+
     private final EatMineral plugin;
     // 銅礦中毒機率映射表
     private final Map<UUID, Double> copperChanceMap = new ConcurrentHashMap<>();
@@ -33,74 +33,40 @@ public class PlayerInteractListener implements Listener {
     private final Map<UUID, Deque<Long>> sodiumChlorideTimestamps = new ConcurrentHashMap<>();
     // 潮結的氯化鈉食用記錄（鐵磚）
     private final Map<UUID, Deque<Long>> wetSodiumChlorideTimestamps = new ConcurrentHashMap<>();
-    
+
     public PlayerInteractListener(EatMineral plugin) {
         this.plugin = plugin;
     }
-    
+
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
-        // 只處理右鍵點擊空氣或方塊
-        if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) {
-            return;
-        }
-        
-        // 只處理主手，避免重複觸發
-        if (event.getHand() != EquipmentSlot.HAND) {
-            return;
-        }
-        
+        if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+        if (event.getHand() != EquipmentSlot.HAND) return;
+
         Player player = event.getPlayer();
         ItemStack item = event.getItem();
-        
-        // 檢查物品是否存在
-        if (item == null || item.getType() == Material.AIR) {
-            return;
-        }
-        
-        // 檢查玩家是否有權限
-        if (!player.hasPermission("eatmineral.use")) {
-            return;
-        }
-        
-        // 檢查物品是否有 NBT 標籤標記為可食用
+        if (item == null || item.getType() == Material.AIR) return;
+        if (!player.hasPermission("eatmineral.use")) return;
+
         ItemMeta meta = item.getItemMeta();
-        if (meta == null) {
-            return;
-        }
-        
-        // 檢查是否有可食用標記
-        if (!meta.getPersistentDataContainer().has(plugin.getMineralManager().getEatableKey(), PersistentDataType.BYTE)) {
-            return;
-        }
-        
-        // 檢查玩家是否飢餓（如果滿飽食度則無法食用）
+        if (meta == null) return;
+
+        if (!meta.getPersistentDataContainer().has(plugin.getMineralManager().getEatableKey(), PersistentDataType.BYTE)) return;
+
         if (player.getFoodLevel() >= 20) {
             player.sendMessage(plugin.getMessageUtil().getMessage("not-hungry"));
             event.setCancelled(true);
             return;
         }
-        
-        // 取消事件，防止預設行為
+
         event.setCancelled(true);
-        
-        // 獲取 NBT 中的食物數據
-        Integer foodLevel = meta.getPersistentDataContainer().get(
-            plugin.getMineralManager().getFoodLevelKey(), 
-            PersistentDataType.INTEGER
-        );
-        Float saturation = meta.getPersistentDataContainer().get(
-            plugin.getMineralManager().getSaturationKey(), 
-            PersistentDataType.FLOAT
-        );
-        
-        if (foodLevel == null || saturation == null) {
-            return;
-        }
-        
-        // 播放食用動畫和音效
+
+        Integer foodLevel = meta.getPersistentDataContainer().get(plugin.getMineralManager().getFoodLevelKey(), PersistentDataType.INTEGER);
+        Float saturation = meta.getPersistentDataContainer().get(plugin.getMineralManager().getSaturationKey(), PersistentDataType.FLOAT);
+        if (foodLevel == null || saturation == null) return;
+
         player.playSound(player.getLocation(), org.bukkit.Sound.ENTITY_GENERIC_EAT, 1.0f, 1.0f);
-        
+
         // 延遲執行食用效果（模擬食用時間）
         AtomicInteger ticks = new AtomicInteger(0);
         ItemStack initialItem = item.clone();
