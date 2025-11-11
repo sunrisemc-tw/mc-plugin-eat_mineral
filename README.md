@@ -9,6 +9,7 @@
 - **食物效果**：不同礦物提供不同的飽食度和飽和度
 - **權限系統**：完整的權限控制
 - **管理命令**：豐富的管理員功能
+- **Folia 支援**：任務排程與資料結構全面調整，相容 Folia 多執行緒伺服器核心
 - **自動編譯**：GitHub Actions 自動化部署
 
 ## 📦 礦物轉換表
@@ -52,7 +53,7 @@
 ## 🛠️ 開發者信息
 
 - **Java 版本**：17
-- **API 版本**：1.20.4
+- **API 版本**：Folia 1.20.4-R0.1
 - **構建工具**：Maven
 - **自動編譯**：GitHub Actions
 
@@ -66,10 +67,16 @@
 
 這些 NBT 標籤確保只有經過轉換的礦物才能被食用，並且保存了正確的食物數值。
 
+### Folia 相容性調整
+
+- 事件處理中的耗時邏輯改為使用 `Player#getScheduler().runAtFixedRate`，避免不支援的同步排程器
+- 玩家統計資料改為使用 `ConcurrentHashMap` 與 `ConcurrentLinkedDeque` 確保多執行緒安全
+- 專案依賴切換至 `dev.folia:folia-api`，建置與執行皆需 Folia 核心
+
 ## 📋 系統需求
 
 - Minecraft 1.20.4+
-- Spigot/Paper 服務器
+- Folia 伺服器核心
 - Java 17+
 
 ## 🤝 貢獻

@@ -21,7 +21,7 @@ minerals:
   diamond:
     name: "§b可食用礦物-鑽石"
     description: "§b一顆閃閃發光的鑽石，可以直接食用，你有錢阿吃這玩意！"
-    food-level: 10
+    food-level: 12
     saturation: 1.4
 
   # 綠寶石設定
@@ -35,7 +35,7 @@ minerals:
   gold:
     name: "§6可食用礦物-黃金錠"
     description: "§6一塊金黃色的黃金錠，可以直接食用，吃了我猜你大概會重金屬中毒！"
-    food-level: 6
+    food-level: 7
     saturation: 1.0
 
   # 煤炭設定
@@ -59,20 +59,6 @@ minerals:
     food-level: 3
     saturation: 0.7
     
-  # 綠寶石設定
-  emerald:
-    name: "§a可食用礦物-綠寶石"
-    description: "§a一顆翠綠的綠寶石，可以直接食用，綠綠的是不是長青苔？"
-    food-level: 7
-    saturation: 1.1
-    
-  # 下界合金錠設定
-  netherite:
-    name: "§5可食用礦物-下界合金錠"
-    description: "§5一塊黑到發光的下界合金錠，可以直接食用，這東西黑到發光跟發霉一樣你敢吃喔！"
-    food-level: 10
-    saturation: 1.5
-    
   # 紅石設定
   redstone:
     name: "§c可食用礦物-紅石"
@@ -93,6 +79,20 @@ minerals:
     description: "§8真是的，怎麼受潮變成一整塊了啦！"
     food-level: 8
     saturation: 1.0
+
+  # 紫水晶設定
+  amethyst_shard:
+    name: "§d可食用礦物-紫水晶碎片"
+    description: "§d一個閃閃發光的紫水晶碎片，可以直接食用，吃起來不會扎嘴嗎！"
+    food-level: 6
+    saturation: 0.9
+    
+  # 青金石設定
+  lapis_lazuli:
+    name: "§t可食用礦物-青金石"
+    description: "§d一個看起來有深邃藍色的青金石，可以直接食用，在古代可比黃金貴多了！"
+    food-level: 5
+    saturation: 0.8
 
 # 消息設定
 messages:
